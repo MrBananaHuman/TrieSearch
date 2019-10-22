@@ -30,28 +30,7 @@ class Trie(object):
                 return False
             if current_node.data != None:
                 return current_node.tag
-
-    def starts_with(self, prefix):
-        current_node = self.head
-        result = []
-        subtrie = None
-        
-        for char in prefix:
-            if char in current_node.children:
-                current_node = current_node.children[char]
-                subtrie = curr_node
-            else:
-                return None          
-        queue = list(subtrie.children.values())     
-        while queue:
-            curr = queue.pop()
-            if curr.data != None:
-                result.append(curr.data)
             
-            queue += list(curr.children.values())
-        return result
-
-
 t = Trie()
 
 tags = ['PS', 'OG', 'LC', 'PL', 'EV', 'PR', 'QT', 'DT', 'OC', 'TI']
