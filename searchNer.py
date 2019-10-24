@@ -35,6 +35,29 @@ class Trie(object):
                 tagged_text = current_node.data
         return last_tag, tagged_text
 
+    def featureExtractor(self, text):
+        output_sent = []
+        start_idx = 0
+        end_idx = len(text)-1
+        while(start_idx < end_idx):
+            model_text = text[start_idx:end_idx].replace(' ', '')
+            results = self.search(model_text)
+            if results[0] != None:
+                term = results[1]
+                start_idx += len(term)
+                for i in range(0, len(term)):
+                    output_sent.append(1)
+            split_idx = text[start_idx:end_idx].find(' ')
+            if split_idx != -1:
+                start_idx += split_idx + 1
+                for i in range(0, split_idx):
+                    output_sent.append(0)
+            else:
+                for i in range(start_idx, end_idx):
+                    start_idx += 1
+                    output_sent.append(0)
+        return output_sent
+
 
 t = Trie()
 
