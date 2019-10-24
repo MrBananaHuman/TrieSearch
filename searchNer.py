@@ -73,4 +73,5 @@ while(True):
     print('input')
     a = input()
     print('\n', t.search(a))
+    print(t.featureExtractor(a))
 
